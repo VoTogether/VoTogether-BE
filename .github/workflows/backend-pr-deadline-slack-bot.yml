@@ -4,9 +4,7 @@ on:
   pull_request:
     types:
       - opened
-    branches: ['dev']
-    paths:
-      - 'backend/**'
+    branches: ['main']
 
 jobs:
   pull_request_open:
