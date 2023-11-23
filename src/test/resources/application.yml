@@ -1,0 +1,83 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=MySQL
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 50
+
+    hibernate:
+      ddl-auto: create
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 35MB
+
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
+  config: classpath:log4j2-local.xml
+
+server:
+  forward-headers-strategy: FRAMEWORK
+  tomcat:
+    max-http-form-post-size: 35MB
+    accept-count: 100
+    max-connections: 8192
+    threads:
+      max: 200
+    hikari:
+      maximumPoolSize: 10
+      connectionTimeout: 30000
+      maxLifetime: 180000
+
+springdoc:
+  swagger-ui:
+    enabled: false
+
+votogether:
+  openapi:
+    dev-url: http://localhost:8080
+
+oauth:
+  kakao:
+    info:
+      grant_type: aaaaaaaaaaaaaaaa
+      client_id: bbbbbbbbbbbbbbbbbbbbbbbbbbbb
+      client_secret: cccccccccccccccccccccccccccccccccccccc
+      redirect_uri: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    disconnect:
+      admin-key: dddddddddddvavaav213
+
+jwt:
+  token:
+    secret-key: abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabc
+    access-expiration-time: 100000
+    refresh-expiration-time: 222222
+
+log4j2:
+  slack_webhook_uri: test_uri
+  slack_channel: test_channel
+
+image:
+  upload_url: ${user.dir}
+  upload_directory: static/images
